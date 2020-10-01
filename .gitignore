@@ -1,3 +1,4 @@
 *.idea 
 *.iml 
-out/production/september1*.py 
+out
+out/production/september1
