@@ -4,6 +4,7 @@ public class GuessMyNumber {
 
     public GuessMyNumber() {
         goal = (int)(Math.random() * 100) + 1;
+        numGuesses = 0;
 
         }
     void checkGuess(int guess){
@@ -19,12 +20,12 @@ public class GuessMyNumber {
             reset();
         }
         else{
-            if(guess > goal){
+            if(guess > goal)
                 System.out.println("Your guess is too high! Try again!");
-            }
-            else{
+
+            else
                 System.out.println("Your guess is too low! Try again!");
-            }
+
         }
 
     }
