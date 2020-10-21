@@ -1,7 +1,7 @@
 import javax.swing.*;
 
 public class Main {
-
+    //test
     public static final int WIDTH = 800, HEIGHT = 800;
 
     public static void main(String[] args) {
