@@ -8,7 +8,7 @@ public class Main {
 
         JFrame window = new JFrame("");
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        window.setBounds(0, 0, WIDTH+22, HEIGHT+22); //(x, y, w, h) 22 due to title bar.
+        window.setBounds(0, 0, WIDTH, HEIGHT); //(x, y, w, h) 22 due to title bar.
 
         MyPanel panel = new MyPanel(WIDTH, HEIGHT);
 

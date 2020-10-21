@@ -2,7 +2,7 @@ import java.awt.*;
 
 public class SmileyFace {
 
-    private int x,y,n;
+    protected int x,y,n;
 
     public SmileyFace(int x, int y, int n) {
         this.x = x;
@@ -16,10 +16,10 @@ public class SmileyFace {
         g2.fillOval(x,y,n,n);
 
         g2.setColor(Color.BLACK);
-        g2.fillOval(x+20,y+20,n/5,n/5);
-        g2.fillOval(x+60,y+20,n/5,n/5);
+        g2.fillOval(x+(n/5),y+(n/5),n/5,n/5);
+        g2.fillOval(x+3*(n/5),y+(n/5),n/5,n/5);
 
-        g2.fillArc(x+20,y+20,n/2+n/10,n/2+n/10,180,180);
+        g2.fillArc(x+(n/5),y+(n/5),3*(n/5),3*(n/5),180,180);
 
 
     }
