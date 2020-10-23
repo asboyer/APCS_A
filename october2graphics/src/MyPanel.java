@@ -13,16 +13,19 @@ public class MyPanel extends JPanel{  //JPanels are things we draw on. Canvas?
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
+        correctBull test = new correctBull(0,0,800);
+        test.draw(g2);
 
-        for (int j = 0; j < 4; j++) {
-            for (int i = 0; i < 6; i++) {
 
-                Bullseye b = new Bullseye(i * 80, j * 80, 80);
-                b.draw(g2);
-            }
-
-        }
-    }
+//        for (int j = 0; j < 4; j++) {
+//            for (int i = 0; i < 6; i++) {
+//
+//                Bullseye b = new Bullseye(i * 80, j * 80, 80);
+//                b.draw(g2);
+//            }
+//
+//        }
+   }
 //        Graphics2D g2 = (Graphics2D)g;
 ////        drawFaceGrid(16, g2);
 //        witchFace boo = new witchFace(200,200,200);
