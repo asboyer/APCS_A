@@ -1,0 +1,1 @@
+This is all my coursework and practice for AP Computer Science A (2020-2021)
