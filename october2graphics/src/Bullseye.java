@@ -10,11 +10,9 @@ public class Bullseye {
     }
 
     public void draw(Graphics2D g2){
-        g2.setColor(Color.red);
-
-
-
+            g2.setColor(Color.red);
             g2.fillOval(x,y,d,d);
+
             g2.setColor(Color.white);
             g2.fillOval(x+d/10,y+d/10,d*4/5,d*4/5);
 
