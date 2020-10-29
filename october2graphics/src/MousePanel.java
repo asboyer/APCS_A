@@ -25,17 +25,34 @@ public class MousePanel extends JPanel implements MouseListener {
 
     @Override
     protected void paintComponent(Graphics g) {
+
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
-        g2.fillOval(x,y,50,50);
-        for (int i = 0; i < points.size(); i++) {
-            Point p = points.get(i);
-            g2.fillOval(p.x, p.y, 50,50);
 
+            for (int i = 0; i < points.size(); i++) {
+                if (i % 3 == 0){
+                    g2.setColor(Color.red);
+                }
+                else if ( i % 3 == 1){
+                    g2.setColor(Color.white);
+                }
+                else{
+                    g2.setColor(Color.blue);
+                }
+                Point p = points.get(i);
+                if (i % 2 == 0){
+
+                    g2.fillOval(p.x, p.y, 50,50);
+
+                }
+                else {
+
+                    g2.fillRect(p.x, p.y, 50,50);
+                }
+
+            }
         }
-    }
-
-
+        
     @Override
     public void mouseClicked(MouseEvent e) {
 
@@ -43,13 +60,19 @@ public class MousePanel extends JPanel implements MouseListener {
 
     @Override
     public void mousePressed(MouseEvent e) {
+        if (e.getButton() == 3){
+            points.clear();
+            repaint();
+        }
+        else {
+            x = e.getX();
+            y = e.getY();
 
-        x = e.getX();
-        y = e.getY();
-        repaint();
-        points.add(new Point(e.getX(), e.getY()));
-        n ++;
+            repaint();
 
+            points.add(new Point(e.getX(), e.getY()));
+            n++;
+        }
     }
 
     @Override
