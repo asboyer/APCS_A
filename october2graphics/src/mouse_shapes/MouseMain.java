@@ -1,3 +1,5 @@
+package mouse_shapes;
+
 import javax.swing.*;
 
 public class MouseMain {

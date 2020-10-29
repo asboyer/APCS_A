@@ -1,3 +1,5 @@
+package mouse_shapes;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
@@ -11,6 +13,7 @@ public class MousePanel extends JPanel implements MouseListener {
     private int x, y, n;
     private ArrayList<Point> points;
     //{ (30,200), (203, 305)
+         // 0         1
 
     public MousePanel(int width, int height) {
         setSize(width, height); // set size is what we got from JPanel
@@ -39,14 +42,14 @@ public class MousePanel extends JPanel implements MouseListener {
                 else{
                     g2.setColor(Color.blue);
                 }
+
                 Point p = points.get(i);
+
                 if (i % 2 == 0){
 
                     g2.fillOval(p.x, p.y, 50,50);
-
                 }
                 else {
-
                     g2.fillRect(p.x, p.y, 50,50);
                 }
 
@@ -61,7 +64,9 @@ public class MousePanel extends JPanel implements MouseListener {
     @Override
     public void mousePressed(MouseEvent e) {
         if (e.getButton() == 3){
-            points.clear();
+//           points.clear();
+//            repaint();
+            points.remove(points.size()-1);
             repaint();
         }
         else {
