@@ -48,4 +48,7 @@ public class Circle {
         g2.fillOval(x, y, r*2,r*2);
     }
 
+    public int getR() {
+        return r;
+    }
 }
