@@ -28,15 +28,28 @@ public class Ball {
             return t;
         }
 
-        public void move(){
+        public void move(int width, int height){
             x += vx;
             y += vy;
 
-            if(x + 2*r >= 800 || x <= 0){
+            if(x + 2*r >= width || x <= 0){
                 vx *= -1;
+                if(x + 2*r >= width){
+                    x = width - r*2;
+                }
+                else{
+                    x = 0;
+                    System.out.println(0%4);
+                }
             }
-            if(y + 2*r >= 800 || y <=0 ){
+            if(y + 2*r >= height || y <= 0){
                 vy *= -1;
+                if(y + 2*r >= height){
+                    y = height - r*2;
+                }
+                else{
+                    y = 0;
+                }
             }
         }
         public void draw(Graphics2D g2){
