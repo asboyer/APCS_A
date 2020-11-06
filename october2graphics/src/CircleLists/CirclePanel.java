@@ -25,6 +25,7 @@ public class CirclePanel extends JPanel implements MouseListener {
             System.out.print(rany);
             System.out.println(" :: " + radius);
             circleList.add(new Circle(ranx,rany,radius));
+            System.out.println(circleList);
         }
 
         addMouseListener(this);
