@@ -8,13 +8,17 @@ public class AnimationPanel extends JPanel {
 
     private int x, y;
     private Timer timer;
-    private Ball theBall;
+    private Ball theBall, newBall;
 
     public AnimationPanel(int width, int height) {
         setSize(width, height);
-        theBall = new Ball(400,400,40,1,1);
-        timer = new Timer(1000/1000, e -> {
-            theBall.move();
+
+
+
+        // panel method: getWidth(), getHeight()
+        timer = new Timer(1000/60, e -> {
+            theBall.move(getWidth(),getHeight());
+
             repaint();
         } );
         timer.start();
