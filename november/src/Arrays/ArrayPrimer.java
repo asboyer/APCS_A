@@ -8,8 +8,8 @@ public class ArrayPrimer {
 
     public static void main(String[] args) {
         int[] arr = new int[5]; // declare int[] var - arr; inits to a 5 element array, all 0s
-        int[] nums = {5, 4, 3, 2, 1, 9}; //shortcut - static array initializer
-
+        int[] nums = {5, 4, 3, 2, 1, 9}; //shortcut - static array initialize
+        ArrayUtil.printArray(nums); // Classname.staticMethod(
         arr[2] = 20;
         System.out.println(arr); //memory address of the array
         //sumThree plusTwo Swapends
