@@ -10,7 +10,7 @@ public class arrayLists {
         list1.add(5);
         System.out.println(list1);
 
-        System.out.println(list.get(0) + list1.get(0));
+        System.out.println(list.get(-1) + list1.get(-1));
         // 1 4 3 2
 
     }
