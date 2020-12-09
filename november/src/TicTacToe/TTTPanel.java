@@ -15,7 +15,7 @@ public class TTTPanel extends JPanel {
         setSize(width, height);
 
         //TODO: 4. Initialize your Board instance field.
-        b = new Board(100);
+        b = new Board(200);
         w = 0;
         setupMouse();
     }

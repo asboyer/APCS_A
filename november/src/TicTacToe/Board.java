@@ -33,14 +33,21 @@ public class Board {
         for (int r = 0; r < board.length; r++) {
             for (int c = 0; c < board[0].length; c++) {
                 g2.setStroke(new BasicStroke(1));
+                g2.setColor(Color.black);
                 g2.drawRect(c*size,r*size,size,size);
+                int w = checkForWinner();
                 g2.setStroke(new BasicStroke(5));
                 if (board[r][c] == X){
+                    if (w == -1)
+                        g2.setColor(Color.RED);
                     g2.drawLine(c * size, r * size, c * size + size, r * size + size);
                     g2.drawLine(c * size, r * size+size, c *size +size, r*size);
                 }
-                if (board[r][c] == O)
-                    g2.drawOval(c*size,r*size,size,size);
+                if (board[r][c] == O) {
+                    if (w == 1)
+                        g2.setColor(Color.BLUE);
+                    g2.drawOval(c * size, r * size, size, size);
+                }
             }
         }
 
