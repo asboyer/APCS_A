@@ -3,6 +3,8 @@ package Arrays;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 public class CheckerPanel extends JPanel {
 
@@ -46,6 +48,37 @@ public class CheckerPanel extends JPanel {
             }
         }
 
+    }
+    public void setupMouse() {
+        addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                int r = e.getY()/100;
+                int c = e.getX()/100;
+                board[r][c] = (board[r][c] + 1) % 2;
+                repaint();
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+
+            }
+        });
     }
 
     public void setupMouse()

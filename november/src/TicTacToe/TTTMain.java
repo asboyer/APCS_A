@@ -1,8 +1,8 @@
-package Arrays;
+package TicTacToe;
 
 import javax.swing.*;
 
-public class CheckerMain {
+public class TTTMain {
     public static final int WIDTH = 815, HEIGHT = 800;
 
     public static void main(String[] args) {
@@ -11,7 +11,7 @@ public class CheckerMain {
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setBounds(0, 0, WIDTH, HEIGHT + 22); //(x, y, w, h) 22 due to title bar.
 
-        CheckerPanel panel = new CheckerPanel(WIDTH, HEIGHT);
+        TTTPanel panel = new TTTPanel(WIDTH, HEIGHT);
 
         panel.setFocusable(true);
         panel.grabFocus();
