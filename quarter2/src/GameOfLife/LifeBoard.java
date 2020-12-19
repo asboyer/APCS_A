@@ -5,16 +5,27 @@ import java.awt.*;
 public class LifeBoard {
 
     private Cell[][] board;
+
     public static final int ROWS=40, COLS=40, SIZE=20;
 
     public LifeBoard() {
-
+        this.board = new Cell[ROWS][COLS];
+        //RIGHT NOW -> board contains null references.
+        //board[0][0].isAlive(); //throw a null pointer exception.
+        for(int r = 0; r < board.length; r++){
+            for(int c = 0; c < board[0].length; c++) {
+                board[r][c] = new Cell();
+            }
+        }
     }
 
     public void draw(Graphics2D g2){
         for(int r = 0; r < board.length; r++){
             for(int c = 0; c < board[0].length; c++) {
-
+                g2.drawRect(c*SIZE, r*SIZE, SIZE, SIZE);
+                if(board[r][c].isAlive()){
+                    g2.fillRect(c*SIZE, r*SIZE, SIZE, SIZE);
+                }
             }
         }
     }
@@ -22,13 +33,22 @@ public class LifeBoard {
     //returns how many of the 8 cells around [row][col] are alive
     public int numNeighbors(int row, int col){
         int count = 0;
-
+        for (int r = row-1; r <= row+1; r++) {
+            for (int c = col-1; c <= col+1; c++) {
+                if(isValidCell(r, c)){
+                    if(board[r][c].isAlive())
+                        count++;
+                }
+            }
+        }
+        if(board[row][col].isAlive())
+            count--;
         return count;
     }
 
     //returns true if [r][c] is a legal index in board, false if not.
     public boolean isValidCell(int r, int c){
-        return (r >= 0 && r < board.length && c >= 0 && r < board[0].length);
+        return (r >= 0 && r < board.length && c >= 0 && c < board[0].length);
     }
 
     /*applies the rules of Life to determine the next board state.
@@ -42,11 +62,13 @@ public class LifeBoard {
         for (int r = 0; r < board.length; r++) {
             for (int c = 0; c < board[0].length; c++) {
                 int n = numNeighbors(r, c);
-
+                nextBoard[r][c] = new Cell(); //creates a dead cell.
                 if(board[r][c].isAlive()){
-
-                }else{
-
+                    if(n == 2 || n == 3)
+                        nextBoard[r][c].setAlive(true);
+                }else{ //dead cell
+                    if(n == 3)
+                        nextBoard[r][c].setAlive(true);
                 }
             }
         }
