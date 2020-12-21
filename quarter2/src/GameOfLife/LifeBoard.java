@@ -6,7 +6,7 @@ public class LifeBoard {
 
     private Cell[][] board;
 
-    public static final int ROWS=40, COLS=40, SIZE=20;
+    public static final int ROWS=300, COLS=300, SIZE=3;
 
     public LifeBoard() {
         this.board = new Cell[ROWS][COLS];
@@ -15,6 +15,9 @@ public class LifeBoard {
         for(int r = 0; r < board.length; r++){
             for(int c = 0; c < board[0].length; c++) {
                 board[r][c] = new Cell();
+//                randomizes
+//                if(Math.random() < .3)
+//                    board[r][c].setAlive(true);
             }
         }
     }
@@ -78,6 +81,21 @@ public class LifeBoard {
     //turns a living cell off, and a dead cell on.
     public void toggleCell(int r, int c){
         board[r][c].setAlive(!board[r][c].isAlive());
+    }
+
+    public void insertPattern(int r, int c, String name){
+        int[][] pattern = RLE_reader.getPattern(name);
+
+        for (int row = 0; row < pattern.length; row++){
+            for (int col = 0; col < pattern[0].length; col++) {
+                if(pattern[row][col] == 0){
+                    board[r + row][c + col].setAlive(false);
+                }else{
+                    board[r + row][c + col].setAlive(true);
+                }
+            }
+        }
+
     }
 
 

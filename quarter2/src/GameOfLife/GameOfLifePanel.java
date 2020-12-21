@@ -19,6 +19,7 @@ public class GameOfLifePanel extends JPanel {
 
         setupMouse();
         setupKeyBoard();
+
     }
 
     @Override
@@ -67,7 +68,13 @@ public class GameOfLifePanel extends JPanel {
                 int keyCode = e.getKeyCode();
                 if(keyCode == KeyEvent.VK_SPACE)
                     lifeBoard.nextGen();
+                if(keyCode == KeyEvent.VK_1) {
+                    int t = (int)(Math.random() * 200) + 10;
+                    lifeBoard.insertPattern(t, t, "glider_gun");
+                }
                 repaint();
+                if(keyCode == KeyEvent.VK_2)
+                    lifeBoard.insertPattern(100,100, "s_monster");
             }
             @Override
             public void keyTyped(KeyEvent e) {
