@@ -81,6 +81,5 @@ public class CheckerPanel extends JPanel {
         });
     }
 
-    public void setupMouse()
 
 }
