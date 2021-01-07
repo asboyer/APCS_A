@@ -66,20 +66,46 @@ public class Game {
         return score;
     }
 
+//    public void playerTurn(){
+//        while(scoreHand(player) < 21) {
+//            System.out.println("HIT or STAY?");
+//            Scanner input = new Scanner(System.in);
+//            String choice = input.nextLine();
+//            if (choice == "1")
+//                System.out.println("bruh");
+//            if (choice.toLowerCase() == "stay") {
+//                System.out.println("Player stays.");
+//                return;
+//            }
+//            else if(choice.toLowerCase() == "hit"){
+//                    System.out.println("Player hits.");
+//                    player.add(deck.dealCard());
+//                    printState();
+//            }
+//            else{
+//                System.out.println("Enter hit or stay");
+//                continue;
+//            }
+//
+//
+//        }
+//            printState();
+//    }
     public void playerTurn(){
         Scanner input = new Scanner(System.in);
-        System.out.println("HIT or STAY?");
-        String choice = input.nextLine();
+        System.out.println("1 for HIT, 2 for STAY.");
+
         while(scoreHand(player) < 21) {
-            if (choice.toLowerCase() == "stay") {
+            int choice = input.nextInt();
+            if (choice == 2) {
                 System.out.println("Player stays.");
-                return;
-            }
-            else if{
-                if(choice.toLowerCase() == "hit"){
-                    System.out.println("Player hits.");
-                    deck.dealCard();
-                }
+                return;  //done.
+            }else{
+                System.out.println("Player hits.");
+                player.add(deck.dealCard());
+                printState();
+                //TODO: hit! deal a card from the deck to the player.
+
 
             }
             printState();
@@ -90,6 +116,10 @@ public class Game {
         //TODO: same as player except...
         //no user input.  The dealer keeps hitting until the score is 17 or more.
         //ie the dealer keeps hitting as long as the score is 16 or less.
+        while(scoreHand(dealer) < 17) {
+            dealer.add(deck.dealCard());
+            System.out.println(dealer);
+        }
 
     }
 
@@ -104,19 +134,28 @@ public class Game {
         }
         playerTurn();
         //TODO if player has more than 21, game over! Loser! Print, then return to exit.
-//        if( ){
-//
-//    }
+        if(scoreHand(player) > 21){
+            System.out.println("Loser!");
+   }
         dealerTurn();
 
         //TODO if dealer has more than 21, game over!  Winner!  Print, then return to exit.
-//        if(scoreHand(dealer) > 21){
-//
-//        }
+        if(scoreHand(dealer) > 21){
+            System.out.println("Winner!");
+       }
 
         //TODO if the player has more than the dealer, game over! Winner!
+        if (scoreHand(player) > scoreHand(dealer)){
+            System.out.println("Winner!");
+        }
         //TODO if the dealer has more than the player, game over! Loser!
+        if (scoreHand(player) < scoreHand(dealer)){
+            System.out.println("Loser!");
+        }
         //TODO if the dealer and the player have the same score, game over! Tie!
+        if (scoreHand(player) == scoreHand(dealer)){
+            System.out.println("Tie!");
+        }
     }
 
     public void printState(){
