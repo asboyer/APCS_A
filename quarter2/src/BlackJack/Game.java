@@ -118,7 +118,6 @@ public class Game {
         //ie the dealer keeps hitting as long as the score is 16 or less.
         while(scoreHand(dealer) < 17) {
             dealer.add(deck.dealCard());
-            System.out.println(dealer);
         }
 
     }
@@ -130,18 +129,21 @@ public class Game {
         //if player is dealt 21, game is over! Winner!
         if (scoreHand(player) == 21) {
             System.out.println("YOU WIN!");
+            printEndState();
             return;    //note you can return; in a void method to exit the method immediately.
         }
         playerTurn();
         //TODO if player has more than 21, game over! Loser! Print, then return to exit.
         if(scoreHand(player) > 21){
             System.out.println("Loser!");
+            printEndState();
    }
         dealerTurn();
 
         //TODO if dealer has more than 21, game over!  Winner!  Print, then return to exit.
         if(scoreHand(dealer) > 21){
             System.out.println("Winner!");
+
        }
 
         //TODO if the player has more than the dealer, game over! Winner!
@@ -156,6 +158,7 @@ public class Game {
         if (scoreHand(player) == scoreHand(dealer)){
             System.out.println("Tie!");
         }
+        printEndState();
     }
 
     public void printState(){
