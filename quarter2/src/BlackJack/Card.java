@@ -1,4 +1,4 @@
-package BlackJack;
+package Blackjack;
 
 public class Card {
 
@@ -7,7 +7,6 @@ public class Card {
     private int rank, suit;
 
     public static final int SPADES = 3, HEARTS = 2, CLUBS = 1, DIAMONDS = 0;
-
 
     public Card(int r, int s) {
         rank = r;

@@ -1,4 +1,4 @@
-package BlackJack;
+package Blackjack;
 import java.util.*;
 
 public class Deck {
@@ -14,21 +14,13 @@ public class Deck {
      */
     public Deck(){
         //1. set cards to a new ArrayList.
-        cards = new ArrayList<Card>();
-
+        cards = new ArrayList<>();
         //2. Create 52 cards - 4 suits, 13 of each suit...
-        for(int r = 1; r < 14; r++){
-            for(int s = 0; s < 4; s++){
-                Card newCard = new Card(r,s);
-                cards.add(newCard);
+        for (int s = 0; s < 4; s++) {
+            for (int r = 1; r < 14; r++) {
+                Card c = new Card(r, s);
+                cards.add(c);
             }
-        }
-
-    }
-
-    public void printDeck(){
-        for (Card card: cards) {
-            System.out.println(card.toString());
         }
     }
 
@@ -36,29 +28,17 @@ public class Deck {
         There are a few ways to do this.  See what you can come up with.
     */
     public void shuffle(){
-        // my way:
-        for(int t = 0; t < 100; t++) {
-            for (int i = 0; i < 52; i++) {
-                int place = (int) (Math.random() * 52);
-                Card c = cards.get(i);
-                Card s = cards.get(place);
-                cards.set(i, s);
-                cards.set(place, c);
-            }
+        //Math.random() [0.0,1.0)
+        //remove a random card...add that card to a random location...repeat 100x
+        for (int i = 0; i < 100; i++) {
+            int a = (int) (Math.random() * cards.size());
+            Card cardA = cards.remove(a);
+            int randIndex = (int) (Math.random() * cards.size());
+            cards.add(randIndex, cardA);
         }
-
-        //hopps way:
-//        for (int i = 0; i < 100; i++) {
-//            int a = (int)(Math.random() * cards.size());
-//            Card cardA = cards.remove(a);
-//            int randIndex = (int)(Math.random() * cards.size());
-//            cards.add(randIndex, cardA);
-//        }
-
     }
-
     //2. dealCard().  Removes and returns the top card (from index 0) from the deck.
-   public Card dealCard(){
+    public Card dealCard(){
         return cards.remove(0);
     }
 
@@ -67,6 +47,5 @@ public class Deck {
             return true;
         return false;
     }
-
 
 }
