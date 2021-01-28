@@ -7,6 +7,7 @@ public class SI_Panel extends JPanel {
     private Timer timer;
     private ArrayList<Alien> aliens;
     private int alienVx;
+    private Player player;
 
 
     public SI_Panel(int width, int height) {
@@ -18,6 +19,7 @@ public class SI_Panel extends JPanel {
             }
         }
         alienVx = 2;
+        player = new Player()
         timer = new Timer(1000/60, e->update());
         timer.start();
     }
