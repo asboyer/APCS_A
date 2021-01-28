@@ -1,4 +1,4 @@
-package Blackjack;
+package BlackJack;
 
 public class CardTest {
     public static void main(String[] args) {
