@@ -63,9 +63,15 @@ public class SI_Panel extends JPanel {
             public void keyTyped(KeyEvent e) {
                 sb.append(e.getKeyChar());
 //                System.out.println(sb.toString());
-                if(sb.toString().equals("baller"))
+                if(sb.toString().contains("baller")){ //if enter baller, turn on powerup, enter to clear command
                     powerUp = true;
                     playerLaserSpeed = -12;
+                }
+                else if(sb.toString().contains("stop")){ //if stop, turn off power up
+                    powerUp = false;
+                    playerLaserSpeed = -6;
+//                    System.out.println("done");
+                }
             }
 
             @Override
@@ -81,8 +87,9 @@ public class SI_Panel extends JPanel {
                             playerLasers.add(laser);
                     }
                 }
-                if(e.getKeyCode() == KeyEvent.VK_ENTER)
-                    sb.delete(0, sb.length());
+                if(e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    sb = new StringBuilder();
+                }
             }
 
             @Override
