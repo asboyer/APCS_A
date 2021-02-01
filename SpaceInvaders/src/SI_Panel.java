@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
 public class SI_Panel extends JPanel {
@@ -19,8 +21,9 @@ public class SI_Panel extends JPanel {
             }
         }
         alienVx = 2;
-        player = new Player()
-        timer = new Timer(1000/60, e->update());
+        player = new Player(getWidth()/2 - 15, getHeight() - 80); //??
+        setupKeyListener();
+        timer = new Timer(1000/144, e->update());
         timer.start();
     }
 
@@ -40,7 +43,27 @@ public class SI_Panel extends JPanel {
                 alien.shiftDown();
             }
         }
+        player.move();
         repaint();
+    }
+
+    public void setupKeyListener(){
+        addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                player.pressed(e.getKeyCode()); //notify player that key is down
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                player.released(e.getKeyCode()); //notify player that key is down
+            }
+        });
     }
 
     @Override
@@ -50,6 +73,8 @@ public class SI_Panel extends JPanel {
         for(Alien alien: aliens){
             alien.draw(g2);
         }
+
+        player.draw(g2);
 
     }
 
