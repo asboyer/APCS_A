@@ -10,6 +10,10 @@ public class SI_Panel extends JPanel {
     private ArrayList<Alien> aliens;
     private int alienVx;
     private Player player;
+    private ArrayList<Laser> playerLasers;
+    private boolean powerUp;
+    StringBuilder sb = new StringBuilder();
+    private int playerLaserSpeed;
 
 
     public SI_Panel(int width, int height) {
@@ -22,6 +26,12 @@ public class SI_Panel extends JPanel {
         }
         alienVx = 2;
         player = new Player(getWidth()/2 - 15, getHeight() - 80); //??
+
+        playerLasers = new ArrayList<>();
+
+        powerUp = false;
+        playerLaserSpeed = -6;
+
         setupKeyListener();
         timer = new Timer(1000/144, e->update());
         timer.start();
@@ -51,12 +61,28 @@ public class SI_Panel extends JPanel {
         addKeyListener(new KeyAdapter() {
             @Override
             public void keyTyped(KeyEvent e) {
-
+                sb.append(e.getKeyChar());
+//                System.out.println(sb.toString());
+                if(sb.toString().equals("baller"))
+                    powerUp = true;
+                    playerLaserSpeed = -12;
             }
 
             @Override
             public void keyPressed(KeyEvent e) {
                 player.pressed(e.getKeyCode()); //notify player that key is down
+                if(e.getKeyCode() == KeyEvent.VK_SPACE){
+                    Laser laser = new Laser(player.getX() + player.getWidth()/2, player.getY(), playerLaserSpeed); //TODO: new speed?
+                     //TODO: test this, add power up
+                    if(powerUp)
+                        playerLasers.add(laser);
+                    else{
+                        if (playerLasers.size() < 1)
+                            playerLasers.add(laser);
+                    }
+                }
+                if(e.getKeyCode() == KeyEvent.VK_ENTER)
+                    sb.delete(0, sb.length());
             }
 
             @Override
@@ -72,6 +98,10 @@ public class SI_Panel extends JPanel {
         Graphics2D g2 = (Graphics2D) g;
         for(Alien alien: aliens){
             alien.draw(g2);
+        }
+
+        for(Laser laser: playerLasers){
+            laser.draw(g2);
         }
 
         player.draw(g2);
