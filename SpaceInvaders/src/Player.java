@@ -21,12 +21,16 @@ public class Player {
 
     }
 
-    public void move(){
-        if(moveRight)
-            x += 5;
-        if(moveLeft)
-            x -= 5;
-    }
+    public void move(int screenWidth){
+        if(moveRight){
+            if(x + width <= screenWidth)
+                x += 5;
+        }
+        if(moveLeft) {
+            if (x >= 0)
+                x -= 5;
+        }
+        }
 
 
     public void pressed(int keyCode){

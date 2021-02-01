@@ -43,7 +43,7 @@ public class SI_Panel extends JPanel {
                 alien.shiftDown();
             }
         }
-        player.move();
+        player.move(getWidth());
         repaint();
     }
 
