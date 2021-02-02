@@ -12,9 +12,12 @@ public class SI_Panel extends JPanel {
     private Player player;
     private ArrayList<Laser> playerLasers;
     private boolean powerUp;
+    private boolean og;
+    private boolean wasOg;
     StringBuilder sb = new StringBuilder();
     private int playerLaserSpeed;
-
+    private int baseSpeed;
+    private int laserDelay, laserCounter; //delay -> frames between shots, counter counts frames
 
     public SI_Panel(int width, int height) {
         setBounds(0,0,width, height);
@@ -28,9 +31,15 @@ public class SI_Panel extends JPanel {
         player = new Player(getWidth()/2 - 15, getHeight() - 80); //??
 
         playerLasers = new ArrayList<>();
+        
+        laserDelay = 30; //TODO: balance this?
+        laserCounter = laserDelay;
 
+        baseSpeed = -12;
         powerUp = false;
-        playerLaserSpeed = -6;
+        og = true;
+        wasOg = false;
+        playerLaserSpeed = baseSpeed;
 
         setupKeyListener();
         timer = new Timer(1000/144, e->update());
@@ -38,6 +47,7 @@ public class SI_Panel extends JPanel {
     }
 
     public void update(){
+        laserCounter ++;
         boolean hitEdge = false;
         for(Alien alien: aliens){
             alien.move(alienVx);
@@ -54,6 +64,16 @@ public class SI_Panel extends JPanel {
             }
         }
         player.move(getWidth());
+
+        for(int i = 0; i < playerLasers.size(); i++){
+            Laser laser = playerLasers.get(i);
+            laser.move();
+            if(laser.getY() < -10){
+                playerLasers.remove(i);
+                i--;
+            }
+        }
+
         repaint();
     }
 
@@ -65,12 +85,26 @@ public class SI_Panel extends JPanel {
 //                System.out.println(sb.toString());
                 if(sb.toString().contains("baller")){ //if enter baller, turn on powerup, enter to clear command
                     powerUp = true;
-                    playerLaserSpeed = -12;
+                    if (og){
+                        wasOg = true;
+                    }
+                    else{
+                        og = true;
+                    }
+                    playerLaserSpeed = playerLaserSpeed * 2;
                 }
                 else if(sb.toString().contains("stop")){ //if stop, turn off power up
                     powerUp = false;
-                    playerLaserSpeed = -6;
+                    if(!wasOg)
+                        og = false;
+                    playerLaserSpeed = baseSpeed;
 //                    System.out.println("done");
+                }
+                else if(sb.toString().contains("new")){
+                    og = false;
+                }
+                else if(sb.toString().contains("og")){
+                    og = true;
                 }
             }
 
@@ -83,8 +117,16 @@ public class SI_Panel extends JPanel {
                     if(powerUp)
                         playerLasers.add(laser);
                     else{
-                        if (playerLasers.size() < 1)
-                            playerLasers.add(laser);
+                        if(og) {
+                            if (playerLasers.size() < 1)
+                                playerLasers.add(laser);
+                        }
+                        else{
+                            if(laserCounter >= laserDelay){
+                                playerLasers.add(laser);
+                                laserCounter = 0;
+                            }
+                        }
                     }
                 }
                 if(e.getKeyCode() == KeyEvent.VK_ENTER) {
