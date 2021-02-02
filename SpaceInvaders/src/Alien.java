@@ -34,4 +34,8 @@ public class Alien {
     public int getSize() {
         return size;
     }
+
+    public Rectangle getHitBox(){
+        return new Rectangle(x, y , size, size);
+    }
 }

@@ -16,7 +16,7 @@ public class SI_Panel extends JPanel {
     private boolean wasOg;
     StringBuilder sb = new StringBuilder();
     private int playerLaserSpeed;
-    private int baseSpeed;
+    private final int baseSpeed;
     private int laserDelay, laserCounter; //delay -> frames between shots, counter counts frames
 
     public SI_Panel(int width, int height) {
@@ -32,7 +32,7 @@ public class SI_Panel extends JPanel {
 
         playerLasers = new ArrayList<>();
         
-        laserDelay = 30; //TODO: balance this?
+        laserDelay = 20; //TODO: balance this?
         laserCounter = laserDelay;
 
         baseSpeed = -12;
@@ -48,6 +48,13 @@ public class SI_Panel extends JPanel {
 
     public void update(){
         laserCounter ++;
+        updateAliens();
+        player.move(getWidth());
+        updatePlayerLaser();
+        repaint();
+    }
+
+    public void updateAliens(){
         boolean hitEdge = false;
         for(Alien alien: aliens){
             alien.move(alienVx);
@@ -63,8 +70,9 @@ public class SI_Panel extends JPanel {
                 alien.shiftDown();
             }
         }
-        player.move(getWidth());
+    }
 
+    public void updatePlayerLaser(){
         for(int i = 0; i < playerLasers.size(); i++){
             Laser laser = playerLasers.get(i);
             laser.move();
@@ -74,7 +82,20 @@ public class SI_Panel extends JPanel {
             }
         }
 
-        repaint();
+        //check for laser/alien collision
+        for (int i = 0; i < playerLasers.size(); i++) {
+            Laser laser = playerLasers.get(i);
+            for (int j = 0; j < aliens.size(); j++){
+                Alien alien = aliens.get(j);
+                if(laser.getHitBox().intersects(alien.getHitBox())){
+                    playerLasers.remove(i);
+                    aliens.remove(j);
+                    j = aliens.size();
+                    i--;
+                }
+            }
+
+        }
     }
 
     public void setupKeyListener(){
@@ -91,7 +112,7 @@ public class SI_Panel extends JPanel {
                     else{
                         og = true;
                     }
-                    playerLaserSpeed = playerLaserSpeed * 2;
+//                    playerLaserSpeed = baseSpeed / 2;
                 }
                 else if(sb.toString().contains("stop")){ //if stop, turn off power up
                     powerUp = false;
@@ -114,8 +135,9 @@ public class SI_Panel extends JPanel {
                 if(e.getKeyCode() == KeyEvent.VK_SPACE){
                     Laser laser = new Laser(player.getX() + player.getWidth()/2, player.getY(), playerLaserSpeed); //TODO: new speed?
                      //TODO: test this, add power up
-                    if(powerUp)
+                    if(powerUp) {
                         playerLasers.add(laser);
+                    }
                     else{
                         if(og) {
                             if (playerLasers.size() < 1)
@@ -156,6 +178,8 @@ public class SI_Panel extends JPanel {
         player.draw(g2);
 
     }
+
+
 
 
 }

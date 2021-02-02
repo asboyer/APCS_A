@@ -40,4 +40,8 @@ public class Laser {
     public int getVy() {
         return vy;
     }
+
+    public Rectangle getHitBox(){
+        return new Rectangle(x, y , w, h);
+    }
 }
