@@ -6,12 +6,14 @@ public class Player {
 
     private int x, y, width, height;
     private boolean moveLeft, moveRight;
+    public int speed;
 
-    public Player(int x, int y) {
+    public Player(int x, int y, int speed) {
         this.x = x;
         this.y = y;
         this.width = 30;
         this.height = 20;
+        this.speed = 5;
         moveRight = false;
         moveLeft = false;
     }
@@ -24,11 +26,11 @@ public class Player {
     public void move(int screenWidth){
         if(moveRight){
             if(x + width <= screenWidth)
-                x += 5;
+                x += speed;
         }
         if(moveLeft) {
             if (x >= 0)
-                x -= 5;
+                x -= speed;
         }
         }
 
@@ -61,5 +63,9 @@ public class Player {
 
     public int getHeight() {
         return height;
+    }
+
+    public Rectangle getHitBox(){
+        return new Rectangle(x, y , width, height);
     }
 }

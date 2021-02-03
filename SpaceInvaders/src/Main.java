@@ -10,6 +10,7 @@ public class Main {
         SI_Panel panel = new SI_Panel(window.getWidth(), window.getHeight());
 
         panel.setFocusable(true);
+
         panel.grabFocus();
 
         window.add(panel);
