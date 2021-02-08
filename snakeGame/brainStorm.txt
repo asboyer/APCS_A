@@ -1,0 +1,6 @@
+Snake Game ideas:
+	array list for the snake boxes
+	if touch edge, die
+	if touch body, die
+	perhaps a data base with names and final scores?
+
