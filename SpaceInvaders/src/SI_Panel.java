@@ -1,3 +1,4 @@
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyAdapter;
@@ -36,8 +37,19 @@ public class SI_Panel extends JPanel {
     private int times;
     private int laserDelay, laserCounter; //delay -> frames between shots, counter counts frames
     private int score, lives;
-
+    private ArrayList<Image[]> alienImages; //{[11, 12], [21, 22], [}
     public SI_Panel(int width, int height) {
+
+
+        alienImages = new ArrayList<>();
+        for (int i = 1; i < 4; i++) {
+            try {
+                Image one = ImageIO.read()
+            }catch (Exception e){e.printStackTrace();}
+
+
+            
+        }
 
         setBounds(0,0,width, height);
         playerSpeed = 5;
@@ -46,6 +58,7 @@ public class SI_Panel extends JPanel {
         setupKeyListener();
         timer = new Timer(1000/100, e->update());
         timer.start();
+
     }
 
     public void restart(){
