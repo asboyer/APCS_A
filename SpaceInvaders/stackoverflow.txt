@@ -1,2 +1,0 @@
-https://stackoverflow.com/questions/20346488/making-a-boolean-true-for-x-seconds-when-condition-is-met-then-reverting-it-to
-https://stackoverflow.com/questions/26604717/how-to-use-the-timer-class-to-set-reset-a-boolean-periodically-java

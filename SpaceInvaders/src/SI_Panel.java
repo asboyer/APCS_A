@@ -323,7 +323,7 @@ public class SI_Panel extends JPanel {
         Graphics2D g2 = (Graphics2D) g;
         g2.setColor(Color.black);
         if(hard)
-            g2.setColor(Color.ORANGE);
+          g2.setColor(Color.ORANGE);
         for(Alien alien: aliens){
             alien.draw(g2);
         }
@@ -345,8 +345,8 @@ public class SI_Panel extends JPanel {
         else if(lives == 1){
             g2.setColor(new Color( 255,93,93));
         }
-        if (powerUp)
-            g2.setColor(Color.BLUE);
+        //if (powerUp)
+          //  g2.setColor(Color.BLUE);
         if(lives == 0)
             g2.setColor(Color.RED);
         player.draw(g2);
