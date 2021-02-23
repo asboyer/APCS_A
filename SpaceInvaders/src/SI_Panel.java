@@ -7,6 +7,8 @@ import java.io.File;
 import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.applet.Applet;
+import java.applet.AudioClip;
 
 public class SI_Panel extends JPanel {
 
@@ -66,8 +68,10 @@ public class SI_Panel extends JPanel {
 
     }
 
+
     public void restart(){
         System.out.println("\n--- NEW GAME ---\n");
+        Sounds.theme.loop();
         // Scanner input = new Scanner(System.in);
         // System.out.println("Player name: ");
         // String name = input.next();
@@ -137,6 +141,7 @@ public class SI_Panel extends JPanel {
                 z ++;
                 System.out.println("GAME OVER!");
                 System.out.println("Score: " + score);
+                Sounds.theme.stop();
                 lose = true;
                 }
             }
@@ -260,12 +265,16 @@ public class SI_Panel extends JPanel {
                     System.out.println("Hard mode: double the points!");
                     laserProbability = 0.2;
                     hard = true;
+                    Sounds.mode.loop();
+                    Sounds.theme.stop();
                     f ++;
                 }
                 else if(sb.toString().contains("norm") && f == 2){
                     System.out.println("Ahhh, back to normal!");
                     laserProbability = 0.03;
                     hard = false;
+                    Sounds.theme.loop();
+                    Sounds.mode.stop();
                     f --;
                 }
                 else if(sb.toString().contains("game")){
