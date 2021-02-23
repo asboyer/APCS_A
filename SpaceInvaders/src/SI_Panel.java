@@ -142,6 +142,9 @@ public class SI_Panel extends JPanel {
                 z ++;
                 System.out.println("GAME OVER!");
                 System.out.println("Score: " + score);
+                if (highScore == score){
+                    System.out.println("NEW HIGH SCORE! CONGRATS!");
+                }
                 Sounds.theme.stop();
                 lose = true;
                 }
