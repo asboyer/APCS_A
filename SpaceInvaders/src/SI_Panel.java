@@ -71,6 +71,7 @@ public class SI_Panel extends JPanel {
 
     public void restart(){
         System.out.println("\n--- NEW GAME ---\n");
+        Sounds.mode.stop();
         Sounds.theme.loop();
         // Scanner input = new Scanner(System.in);
         // System.out.println("Player name: ");
@@ -141,6 +142,9 @@ public class SI_Panel extends JPanel {
                 z ++;
                 System.out.println("GAME OVER!");
                 System.out.println("Score: " + score);
+                if (highScore == score){
+                    System.out.println("NEW HIGH SCORE! CONGRATS!");
+                }
                 Sounds.theme.stop();
                 lose = true;
                 }
@@ -313,20 +317,26 @@ public class SI_Panel extends JPanel {
             @Override
             public void keyPressed(KeyEvent e) {
                 player.pressed(e.getKeyCode()); //notify player that key is down
-                if(e.getKeyCode() == KeyEvent.VK_UP || e.getKeyCode() == KeyEvent.VK_SPACE);
+
+                if(e.getKeyCode() == KeyEvent.VK_UP || e.getKeyCode() == KeyEvent.VK_SPACE){
+
                     Laser laser = new Laser(player.getX() + player.getWidth()/2, player.getY(), playerLaserSpeed); //TODO: new speed?
                      //TODO: test this, add power up
                     if(powerUp) {
                         playerLasers.add(laser);
+                        Sounds.shoot.play();
                     }
                     else{
                         if(og) {
                             if(playerLasers.size() < 1)
                                 playerLasers.add(laser);
+                                Sounds.shoot.play();
+
                         }
                         else{
                             if(laserCounter >= laserDelay){
                                 playerLasers.add(laser);
+                                Sounds.shoot.play();
                                 laserCounter = 0;
                             }
                         }
