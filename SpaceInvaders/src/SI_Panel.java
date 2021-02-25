@@ -313,8 +313,7 @@ public class SI_Panel extends JPanel {
             @Override
             public void keyPressed(KeyEvent e) {
                 player.pressed(e.getKeyCode()); //notify player that key is down
-                if(e.getKeyCode() == KeyEvent.VK_UP || e.getKeyCode() == KeyEvent.VK_SPACE){
-                    Sounds.shoot.play();
+                if(e.getKeyCode() == KeyEvent.VK_UP || e.getKeyCode() == KeyEvent.VK_SPACE);
                     Laser laser = new Laser(player.getX() + player.getWidth()/2, player.getY(), playerLaserSpeed); //TODO: new speed?
                      //TODO: test this, add power up
                     if(powerUp) {
