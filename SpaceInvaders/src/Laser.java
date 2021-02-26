@@ -15,7 +15,6 @@ public class Laser {
 
     public void draw(Graphics g2){
         g2.fillRect(x, y, w, h);
-        Sounds.shoot.play();
     }
 
     public void move(){
