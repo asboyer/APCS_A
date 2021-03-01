@@ -3,7 +3,7 @@ import javax.swing.*;
 public class Main {
     public static void main(String[] args) {
 
-        JFrame window = new JFrame("");
+        JFrame window = new JFrame("Space Invaders");
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setBounds(0, 0, 800, 800 + 22); //(x, y, w, h) 22 due to title bar.
 
