@@ -146,6 +146,7 @@ public class SI_Panel extends JPanel {
                     System.out.println("NEW HIGH SCORE! CONGRATS!");
                 }
                 Sounds.theme.stop();
+                Sounds.mode.stop();
                 lose = true;
                 }
             }
