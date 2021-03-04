@@ -31,19 +31,19 @@ public class head {
 
     public void move(int screenHeight, int screenWidth){
         if(direction == RIGHT){
-            while(x + w <= screenWidth)
+            if(x + w <= screenWidth)
             {x += speed;}
         }
         if(direction == LEFT) {
-            while(x >= 0)
+            if(x >= 0)
             {x -= speed;}
         }
         if(direction == UP){
-            while(y >= 0)
+            if(y >= 0)
             {y -= speed;}
         }
         if(direction == DOWN) {
-            while(y + h <= screenHeight)
+            if(y + h <= screenHeight)
             {y += speed;}
         }
     }
