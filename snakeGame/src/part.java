@@ -1,7 +1,7 @@
 import java.awt.*;
 import java.awt.event.KeyEvent;
 
-public class head {
+public class part {
 
     private int x, y, w, h, speed;
     private boolean moveRight, moveLeft, moveDown, moveUp;
@@ -11,7 +11,7 @@ public class head {
     private final int DOWN = 3;
     private int direction;
 
-    public head(int x, int y, int speed){
+    public part(int x, int y, int speed){
         this.x = x;
         this.y = y;
         this.speed = speed;

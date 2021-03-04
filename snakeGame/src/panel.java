@@ -6,14 +6,13 @@ import java.util.ArrayList;
 
 public class panel extends JPanel {
 
-    private final int unit_size = 25;
-    private final int game_units = (getWidth()*getHeight())/unit_size;
-    private final int delay = 75;
+//    private final int unit_size = 25;
+//    private final int game_units = (getWidth()*getHeight())/unit_size;
+//    private final int delay = 75;
 //    final int x[]
 
     private Timer timer;
-    private ArrayList<body> body;
-    private head head;
+    private ArrayList<part> snake;
 
 
     public panel(int width, int height) {
@@ -22,12 +21,15 @@ public class panel extends JPanel {
 
         timer = new Timer(1000/60, e->update());
         timer.start();
-        head = new head(getWidth()/2, getHeight() - 200, 7);
+//        part = new part(getWidth()/2, getHeight() - 200, 7);
+        for(part part : snake){
+            snake.add(snake.remove(0));
+        }
         setupKeyListener();
     }
 
     public void update(){
-        head.move(getWidth(), getHeight());
+//        part.move(getWidth(), getHeight());
         repaint();
     }
 
@@ -40,12 +42,12 @@ public class panel extends JPanel {
 
             @Override
             public void keyPressed(KeyEvent e) {
-                head.pressed(e.getKeyCode());
+//                part.pressed(e.getKeyCode());
             }
 
             @Override
             public void keyReleased(KeyEvent e) {
-                head.released(e.getKeyCode());
+//                part.released(e.getKeyCode());
             }
         });
     }
@@ -54,7 +56,7 @@ public class panel extends JPanel {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
-        head.draw(g2);
+//        part.draw(g2);
     }
 
 
