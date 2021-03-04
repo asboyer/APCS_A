@@ -1,17 +1,17 @@
 import java.awt.*;
 import java.awt.event.KeyEvent;
 
-public class part {
+public class Part {
 
     private int x, y, w, h, speed;
     private boolean moveRight, moveLeft, moveDown, moveUp;
-    private final int LEFT = 0;
-    private final int RIGHT = 1;
-    private final int UP = 2;
-    private final int DOWN = 3;
+    public static final int LEFT = 0;
+    public static final int RIGHT = 1;
+    public static final int UP = 2;
+    public static final int DOWN = 3;
     private int direction;
 
-    public part(int x, int y, int speed){
+    public Part(int x, int y, int speed){
         this.x = x;
         this.y = y;
         this.speed = speed;
@@ -29,24 +29,24 @@ public class part {
         g2.fillRect(x, y, w, h);
     }
 
-    public void move(int screenHeight, int screenWidth){
-        if(direction == RIGHT){
-            if(x + w <= screenWidth)
-            {x += speed;}
-        }
-        if(direction == LEFT) {
-            if(x >= 0)
-            {x -= speed;}
-        }
-        if(direction == UP){
-            if(y >= 0)
-            {y -= speed;}
-        }
-        if(direction == DOWN) {
-            if(y + h <= screenHeight)
-            {y += speed;}
-        }
-    }
+//    public void move(int screenHeight, int screenWidth){
+//        if(direction == RIGHT){
+//            if(x + w <= screenWidth)
+//            {x += speed;}
+//        }
+//        if(direction == LEFT) {
+//            if(x >= 0)
+//            {x -= speed;}
+//        }
+//        if(direction == UP){
+//            if(y >= 0)
+//            {y -= speed;}
+//        }
+//        if(direction == DOWN) {
+//            if(y + h <= screenHeight)
+//            {y += speed;}
+//        }
+//    }
 
 
     public void pressed(int keyCode){
@@ -84,4 +84,11 @@ public class part {
         return new Rectangle(x, y , w, h);
     }
 
+    public int getDirection() {
+        return direction;
+    }
+
+    public int getSpeed() {
+        return speed;
+    }
 }
