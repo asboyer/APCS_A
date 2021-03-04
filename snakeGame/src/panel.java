@@ -22,7 +22,7 @@ public class panel extends JPanel {
 
         timer = new Timer(1000/60, e->update());
         timer.start();
-        head = new head(100, 100, 8);
+        head = new head(getWidth()/2, getHeight() - 200, 1);
         setupKeyListener();
     }
 
