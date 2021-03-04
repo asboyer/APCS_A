@@ -50,13 +50,13 @@ public class head {
 
 
     public void pressed(int keyCode){
-        if(keyCode == KeyEvent.VK_A)
+        if(keyCode == KeyEvent.VK_A && direction != RIGHT)
             direction = LEFT;
-        else if(keyCode == KeyEvent.VK_D)
+        else if(keyCode == KeyEvent.VK_D && direction != LEFT)
             direction = RIGHT;
-        else if(keyCode == KeyEvent.VK_S)
+        else if(keyCode == KeyEvent.VK_S && direction != UP)
             direction = DOWN;
-        else if(keyCode == KeyEvent.VK_W)
+        else if(keyCode == KeyEvent.VK_W && direction != DOWN)
             direction = UP;
     }
 
