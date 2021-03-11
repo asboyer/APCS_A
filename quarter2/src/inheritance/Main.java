@@ -18,16 +18,19 @@ public class Main extends JPanel {
         Ball aBall = new Ball(getWidth()/2, getHeight()/2, 2, -3);
         ballList.add(aBall);
 
-        PacingBall pBall = new PacingBall(30,400,5,0,30);
+        PacingBall pBall = new PacingBall(30,400,5,0,100);
         ballList.add(pBall);
 
-        timer = new Timer(1000/60, e->update());
+        ballList.add(new TrailBall(300,500,-6,4,200));
+        ballList.add(new PulseBall(200, 300, 5, -4, 10, 100));
+        ballList.add(new StairBall(200, 300, 60, 10));
+        timer = new Timer(1000/140, e->update());
         timer.start();
     }
 
     public void update(){
         for(Ball b: ballList)
-            b.move();
+            b.move(getWidth(), getHeight());
 
         repaint();
     }

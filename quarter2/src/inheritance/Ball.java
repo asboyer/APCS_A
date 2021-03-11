@@ -15,9 +15,21 @@ public class Ball {
         size = 25;
     }
 
-    public void move(){
+    public void move(int width, int height){
         x += vx;
         y += vy;
+        handleEdges(width, height);
+    }
+
+    public void handleEdges(int width, int height){
+        if (x + size > width && vx > 0)
+            vx *= - 1;
+        if( x < 0 && vx < 0)
+            vx *= -1;
+        if(y + size > height && vy > 0)
+            vy *= -1;
+        else if(y < 0 && vy < 0)
+            vy *= - 1;
     }
 
     public void draw(Graphics2D g2){

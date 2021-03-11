@@ -19,7 +19,7 @@ public class PacingBall extends Ball{
 
 
     @Override
-    public void move() {
+    public void move(int width, int height) {
         stepCounter ++;
         if(stepCounter >= pathLength){
             //turn around
@@ -28,6 +28,6 @@ public class PacingBall extends Ball{
             setVy(-getVy());
             stepCounter = 0;
         }
-            super.move();
+            super.move(width, height);
     }
 }
