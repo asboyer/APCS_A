@@ -24,30 +24,9 @@ public class Part {
         direction = UP;
 
     }
-
     public void draw(Graphics2D g2){
         g2.fillRect(x, y, w, h);
     }
-
-//    public void move(int screenHeight, int screenWidth){
-//        if(direction == RIGHT){
-//            if(x + w <= screenWidth)
-//            {x += speed;}
-//        }
-//        if(direction == LEFT) {
-//            if(x >= 0)
-//            {x -= speed;}
-//        }
-//        if(direction == UP){
-//            if(y >= 0)
-//            {y -= speed;}
-//        }
-//        if(direction == DOWN) {
-//            if(y + h <= screenHeight)
-//            {y += speed;}
-//        }
-//    }
-
 
     public void pressed(int keyCode){
         if(keyCode == KeyEvent.VK_A && direction != RIGHT)
@@ -61,6 +40,10 @@ public class Part {
     }
 
     public void released(int keyCode){
+
+    }
+
+    public void typed(int keyCode){
 
     }
 
@@ -90,5 +73,9 @@ public class Part {
 
     public int getSpeed() {
         return speed;
+    }
+
+    public void setDirection(int direction) {
+        this.direction = direction;
     }
 }
