@@ -1,5 +1,3 @@
-import sun.util.locale.provider.FallbackLocaleProviderAdapter;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyAdapter;
