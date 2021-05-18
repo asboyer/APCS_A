@@ -25,20 +25,24 @@ public class BoyerMystery{
             int rand = (int) (Math.random() * 3) + 1;
 
             if (rand == 1) {
+                g2.setColor(Color.blue);
                 currentX = (currentX + pointA.x) / 2;
                 currentY = (currentY + pointA.y) / 2;
             }
             else if (rand == 2) {
+                g2.setColor(Color.pink);
                 currentX = (currentX + pointB.x) / 2;
                 currentY = (currentY + pointB.y) / 2;
 
             }
             else {
+                g2.setColor(Color.green);
                 currentX = (currentX + pointC.x) / 2;
                 currentY = (currentY + pointC.y) / 2;
             }
 
             g2.drawLine(currentX, currentY, currentX + 1, currentY + 1);
+
 
         }
 
