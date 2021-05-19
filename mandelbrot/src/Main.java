@@ -1,13 +1,47 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 public class Main extends JPanel {
 
     int maxLoops = 40;
 
+    private double xMin=-2, xMax=1.5, yMin=-1.5, yMax=1.5;
+
+
 
     public Main(int w, int h){
+
         setSize(w, h);
+        addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+
+                repaint();
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+
+            }
+        });
 
 
     }
@@ -17,11 +51,10 @@ public class Main extends JPanel {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D)g;
 
-        double da = (2.5 - - 2)/getWidth();
-        double db = (1.5 - - 1.5)/getHeight();
-
-        for (double a = -2; a < 1.5; a+=da) {
-            for (double b = -1.5; b < 1.5; b+=db){
+        double da = (xMax - xMin)/getWidth();
+        double db = (yMax - yMin)/getHeight();
+        for (double a = xMin; a < xMax; a+=da) {
+            for (double b = yMin; b < yMax; b+=db){
                 int count = testPoint(a, b);
                 if(count == maxLoops){
                     g2.setColor(Color.black);
@@ -57,8 +90,8 @@ public class Main extends JPanel {
 
     public void plotPoint(double a, double b, Graphics2D g2) {
 
-        double x = (a - -2)*(getWidth()/(3.5));
-        double y = getHeight() - (b - -1.5)*(getHeight()/3);
+        double x = (a - xMin)*(getWidth()/(xMax - xMin));
+        double y = getHeight() - (b - yMin)*(getHeight()/(yMax - yMin));
         g2.drawLine((int)x, (int)y, (int)x+1, (int)y+1);
 
     }
@@ -67,8 +100,8 @@ public class Main extends JPanel {
         JFrame window = new JFrame();
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        int width = 600;
-        int height = 600;
+        int width = 933;
+        int height = 800;
         window.setBounds(0, 0, width, height + 22); //(x, y, w, h) 22 due to title bar.
 
         Main panel = new Main(width, height);
@@ -77,6 +110,6 @@ public class Main extends JPanel {
 
         window.add(panel);
         window.setVisible(true);
-        window.setResizable(true);
+        window.setResizable(false);
     }
 }
