@@ -9,8 +9,6 @@ public class Main extends JPanel {
 
     private double xMin=-2, xMax=1.5, yMin=-1.5, yMax=1.5;
 
-
-
     public Main(int w, int h){
 
         setSize(w, h);
@@ -23,6 +21,19 @@ public class Main extends JPanel {
             @Override
             public void mousePressed(MouseEvent e) {
 
+                double currentWidth = xMax-xMin;
+                double currentHeight = yMax-yMin;
+
+                int x = e.getX();  //need the real number version of this..
+                double a = x*(currentWidth/getWidth())+xMin;
+                int y = e.getY();
+                double b = (-y + getHeight())*(currentHeight/getHeight())+yMin;
+                xMin = a - currentWidth/4;
+                xMax = a + currentWidth/4;
+                yMin = b - currentHeight/4;
+                yMax = b + currentHeight/4;
+
+                maxLoops *= 1.15;
 
                 repaint();
             }
