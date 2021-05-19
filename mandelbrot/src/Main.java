@@ -89,11 +89,12 @@ public class Main extends JPanel {
 
         while(counter < maxLoops && an*an + bn*bn <= 4) {
 
-//            double nextA = (an*an - bn*bn) + a;
-//            double nextB = (2*an*bn) + b; mandelbrot
+            double nextA = (an*an - bn*bn) + a;
+            double nextB = (2*an*bn) + b; //
+            // mandelbrot
 
-            double nextA = (an*an - bn*bn) - .8;
-            double nextB = (2*an*bn) + 0.156; // dragon set
+//            double nextA = (an*an - bn*bn) - .8;
+//            double nextB = (2*an*bn) + 0.156; // dragon set
 
             an = nextA;
             bn = nextB;
