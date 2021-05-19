@@ -3,7 +3,7 @@ import java.awt.*;
 
 public class Main extends JPanel {
 
-    int maxLoops = 420;
+    int maxLoops = 40;
 
 
     public Main(int w, int h){
