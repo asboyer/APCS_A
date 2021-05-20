@@ -16,6 +16,7 @@ public class Main extends JPanel {
         images.add(new NegativeImage("slothface.png", 400, 287));
         images.add(new SepiaImage("slothface.png", 0, 287*2));
         images.add(new FadeWhiteImage("slothface.png", 400, 287*2));
+        images.add(new MirrorImage("slothface.png", 400, 0));
 
 
 
