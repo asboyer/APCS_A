@@ -12,11 +12,25 @@ public class MirrorImage extends CustomImage{
     @Override
     public void processImage(){
         Pixel[][] pixels = getPixels();
+        int centerX = pixels.length/2;
+        int counter = 0;
         for (int r = 0; r < pixels.length; r++) {
-            for (int c = 0; c < pixels[0].length/2; c++) {
-                Pixel cp = pixels[r][c];
-                Pixel op = pixels[r][c + pixels.length/2];
-                op.setColorARGB(cp.getAlpha(), cp.getRed(), cp.getGreen(), cp.getBlue());
+            for (int c = 0; c < pixels[0].length; c++) {
+                if(r > centerX){
+                    System.out.print(r);
+                    System.out.println(centerX);
+                    counter++;
+                    Pixel cp = pixels[r - counter][c];
+                    Pixel op = pixels[r][c];
+                    op.setColorARGB(cp.getAlpha(), cp.getRed(), cp.getGreen(), cp.getBlue());
+
+                }
+                else{
+                    Pixel cp = pixels[r][c];
+                    Pixel op = pixels[r][c];
+                    op.setColorARGB(cp.getAlpha(), cp.getRed(), cp.getGreen(), cp.getBlue());
+
+                }
             }
         }
         setImage(pixels);
