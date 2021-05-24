@@ -10,13 +10,13 @@ public class Main extends JPanel {
         setSize(w, h);
 
         images = new ArrayList<>();
-        images.add(new GreenImage("slothface.png", 400, 0));
-        images.add(new GreyImage("slothface.png", 0, 287));
-        images.add(new NegativeImage("slothface.png", 400, 287));
-        images.add(new SepiaImage("slothface.png", 0, 287*2));
-        images.add(new FadeWhiteImage("slothface.png", 400, 287*2));
-        images.add(new MirrorImage("slothface.png", 400, 0));
-        images.add(new PixelatedImage("slothface.png", 0, 0));
+//        images.add(new GreenImage("slothface.png", 400, 0));
+        images.add(new AsciiImage("slothface.png", 0, 287));
+//        images.add(new NegativeImage("slothface.png", 400, 287));
+//        images.add(new SepiaImage("slothface.png", 0, 287*2));
+//        images.add(new FadeWhiteImage("slothface.png", 400, 287*2));
+//        images.add(new MirrorImage("slothface.png", 400, 0));
+//        images.add(new PixelatedImage("slothface.png", 0, 0));
 
 
 
