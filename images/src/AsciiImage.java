@@ -15,7 +15,7 @@ public class AsciiImage extends CustomImage{
     public void draw(Graphics2D g2){
         Pixel[][] pixels = getPixels();
         int pixelSize = 5;
-        g2.setFont(new Font("Roboto Monaco", Font.PLAIN, 8));
+        g2.setFont(new Font("Roboto Monaco", Font.PLAIN, 6));
         String ascii = "$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\\|()1{}[]?-_+~<>i!lI;:,\"^`'.";
         ascii = new StringBuilder(ascii).reverse().toString();
         for (int r = 0; r < pixels.length; r+=pixelSize) {
