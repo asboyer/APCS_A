@@ -12,8 +12,6 @@ public class MirrorImage extends CustomImage{
     @Override
     public void processImage(){
         Pixel[][] pixels = getPixels();
-        int centerX = pixels.length/2;
-        int counter = 0;
         for (int r = 0; r < pixels.length; r++) {
             for (int c = 0; c < pixels[0].length/2; c++) {
                 pixels[r][c] = pixels[r][pixels[0].length - c - 1];
