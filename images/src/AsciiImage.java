@@ -22,9 +22,8 @@ public class AsciiImage extends CustomImage{
             for (int c = 0; c < pixels[0].length; c+=pixelSize) {
                 Pixel p = pixels[r][c];
                 double a = (p.getBlue() + p.getRed() + p.getGreen())/(3);
-                int color = (int)(ascii.length()*a/255.0) -1;
+                int color = (int)(ascii.length()*a/255.0) - 1;
                 String string = ascii.substring(color, color + 1);
-                System.out.println(string);
                 g2.drawString(string, c, r);
             }
         }
