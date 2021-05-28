@@ -19,6 +19,9 @@ public class Square {
 
     public void calcNeighborMines(){
 
+        int count = 0;
+        
+
 
 
 
