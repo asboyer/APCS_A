@@ -19,10 +19,91 @@ public class Square {
 
         int count = 0;
 
-        for (int r = row-1; r <= row+1; r++) {
-            for (int c = col-1; c <= col+1; c++) {
-                if (board[r][c].isMine()){
-                    count++;
+        if(row == 0 && col == 0){
+            for (int r = row; r <= row+1; r++) {
+                for (int c = col; c <= col+1; c++) {
+                    if (board[r][c].isMine()){
+                        count++;
+                    }
+                }
+            }
+        }
+
+        else if(row == 0 && col == board[0].length - 1){
+            for (int r = row; r <= row+1; r++) {
+                for (int c = col-1; c <= col; c++) {
+                    if (board[r][c].isMine()){
+                        count++;
+                    }
+                }
+            }
+        }
+
+        else if(row == 0){
+            for (int r = row; r <= row+1; r++) {
+                for (int c = col-1; c <= col+1; c++) {
+                    if (board[r][c].isMine()){
+                        count++;
+                    }
+                }
+            }
+        }
+
+        else if(col == 0 && row == board.length - 1){
+            for (int r = row-1; r <= row; r++) {
+                for (int c = col; c <= col+1; c++) {
+                    if (board[r][c].isMine()){
+                        count++;
+                    }
+                }
+            }
+        }
+
+        else if(col == 0){
+            for (int r = row-1; r <= row+1; r++) {
+                for (int c = col; c <= col+1; c++) {
+                    if (board[r][c].isMine()){
+                        count++;
+                    }
+                }
+            }
+        }
+        else if(row == board.length - 1 || col == board[0].length - 1){
+            for (int r = row-1; r <= row; r++) {
+                for (int c = col-1; c <= col; c++) {
+                    if (board[r][c].isMine()){
+                        count++;
+                    }
+                }
+            }
+        }
+
+        else if(col == board[0].length - 1){
+            for (int r = row-1; r <= row+1; r++) {
+                for (int c = col-1; c <= col; c++) {
+                    if (board[r][c].isMine()){
+                        count++;
+                    }
+                }
+            }
+        }
+
+        else if(row == board.length -1){
+            for (int r = row-1; r <= row; r++) {
+                for (int c = col-1; c <= col+1; c++) {
+                    if (board[r][c].isMine()){
+                        count++;
+                    }
+                }
+            }
+        }
+
+        else {
+            for (int r = row-1; r <= row+1; r++) {
+                for (int c = col-1; c <= col+1; c++) {
+                    if (board[r][c].isMine()){
+                        count++;
+                    }
                 }
             }
         }
@@ -55,6 +136,7 @@ public class Square {
     }
 
     public void click(){
+        System.out.println(neighborMines);
         isRevealed = true;
     }
 

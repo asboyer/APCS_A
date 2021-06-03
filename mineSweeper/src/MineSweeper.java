@@ -26,7 +26,7 @@ public class MineSweeper extends JPanel {
                 i--;
             }
         }
-        for(int r = 0; r < board.length; r ++){
+        for(int r = 0; r < board.length; r++){
             for(int c = 0; c < board[0].length; c++){
                 if(board[r][c] == null){
                     board[r][c] = new Square(false, r, c, board);
@@ -37,7 +37,11 @@ public class MineSweeper extends JPanel {
         //Here is a good spot to calc each Square's neighborMines (after all squares are initialized)
         //Maybe write a method in Square that finds how many
         //mines are around it, and call that method on each Square here.
-
+        for(int r = 0; r < board.length; r++){
+            for(int c = 0; c < board[0].length; c++){
+                board[r][c].calcNeighborMines();
+            }
+        }
 
         setupMouseListener();
     }
@@ -63,6 +67,7 @@ public class MineSweeper extends JPanel {
                 int c = x / SIZE;
 
                 board[r][c].click();
+
 
                 repaint();
             }
