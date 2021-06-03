@@ -4,28 +4,37 @@ public class Square {
 
     private boolean isMine, isRevealed;
     private int neighborMines;
-    private int r, c;
+    private int row, col;
     private Square[][] board;
 
-    public Square(boolean isMine, int r, int c, Square[][] board) {
+    public Square(boolean isMine, int row, int col, Square[][] board) {
         this.isMine = isMine;
-        this.r = r;
-        this.c = c;
+        this.row = row;
+        this.col = col;
         this.isRevealed = false;
         this.board = board;
-        neighborMines = 0;  //you'll want to code this properly.
-        //probably a numNeighbors method - probably similar to Life...
+        calcNeighborMines();
     }
 
     public void calcNeighborMines(){
 
         int count = 0;
-        
+
+        for (int r = row-1; r <= row+1; r++) {
+            for (int c = col-1; c <= col+1; c++) {
+                if (board[r][c].isMine()){
+                    count++;
+                }
+            }
+        }
+
+        if(board[row][col].isMine())
+            count = -1;
+
+        neighborMines = count;
 
 
 
-
-//        neighborMines = count;
     }
 
     public void draw(Graphics2D g2){
@@ -36,18 +45,22 @@ public class Square {
             }else{
                 g2.setColor(Color.BLACK);
             }
-            g2.fillRect(c * size, r * size, size, size);
+            g2.fillRect(col * size, row * size, size, size);
         }else{
             g2.setColor(Color.GRAY);
-            g2.fillRect(c * size, r * size, size, size);
+            g2.fillRect(col * size, row * size, size, size);
         }
         g2.setColor(Color.BLACK);
-        g2.drawRect(c * size, r * size, size, size);
+        g2.drawRect(col * size, row * size, size, size);
 
     }
 
     public void click(){
         isRevealed = true;
+    }
+
+    public boolean isMine(){
+        return isMine;
     }
 
 }

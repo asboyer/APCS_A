@@ -14,6 +14,10 @@ public class MineSweeper extends JPanel {
         setSize(width, height);
 
         board = new Square[15][15];
+
+        for(int i = 0; i <99; i++){
+            int row = Math.random() * 16
+        }
         //create all the Square objects in the 2D array.
         //make a number of them have mines?
 
