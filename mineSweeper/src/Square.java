@@ -13,7 +13,6 @@ public class Square {
         this.col = col;
         this.isRevealed = false;
         this.board = board;
-        calcNeighborMines();
     }
 
     public void calcNeighborMines(){

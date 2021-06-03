@@ -9,17 +9,30 @@ public class MineSweeper extends JPanel {
     private Square[][] board;
 
     public static final int SIZE = 30;
+    private int numMines = 30;
 
     public MineSweeper(int width, int height) {
         setSize(width, height);
 
         board = new Square[15][15];
 
-        for(int i = 0; i <99; i++){
-            int row = Math.random() * 16
+        for(int i = 0; i <numMines; i++){
+            int row = (int)(Math.random() * 15);
+            int col = (int)(Math.random() * 15);
+            if(board[row][col] == null){
+                board[row][col] = new Square(true, row, col, board);
+            }
+            else{
+                i--;
+            }
         }
-        //create all the Square objects in the 2D array.
-        //make a number of them have mines?
+        for(int r = 0; r < board.length; r ++){
+            for(int c = 0; c < board[0].length; c++){
+                if(board[r][c] == null){
+                    board[r][c] = new Square(false, r, c, board);
+                }
+            }
+        }
 
         //Here is a good spot to calc each Square's neighborMines (after all squares are initialized)
         //Maybe write a method in Square that finds how many
