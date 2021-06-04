@@ -126,6 +126,10 @@ public class Square {
                 g2.setColor(Color.BLACK);
             }
             g2.fillRect(col * size, row * size, size, size);
+            if(!isMine){
+                g2.setColor(Color.WHITE);
+                g2.drawString(Integer.toString(neighborMines), col*size + size/2 - 4, row*size + size/2 + size/4 );
+            }
         }else{
             g2.setColor(Color.GRAY);
             g2.fillRect(col * size, row * size, size, size);
@@ -133,6 +137,12 @@ public class Square {
         g2.setColor(Color.BLACK);
         g2.drawRect(col * size, row * size, size, size);
 
+    }
+
+    public void revealCell(){
+        if (!isRevealed) {
+            revealCell();
+        }
     }
 
     public void click(){
